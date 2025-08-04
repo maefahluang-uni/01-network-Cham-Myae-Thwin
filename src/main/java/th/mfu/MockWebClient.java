@@ -18,6 +18,19 @@ public class MockWebClient {
 
         // Close the socket
 
+          try (Socket socket = new Socket("localhost",8080)) {
+            BufferedReader in = new BufferedReader(
+            new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println();
+            System.out.println(in.readLine());
+            System.out.println(in.readLine());
+            System.out.println(in.readLine());
+            System.out.println(in.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
